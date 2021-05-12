@@ -1,0 +1,26 @@
+{
+  "name": "chia-farm-monitor",
+  "version": "0.0.1",
+  "description": "monitor chia farm status",
+  "main": "index.js",
+  "scripts": {
+    "lint": "eslint .",
+    "test": "npm run lint"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:martinj/chia-farm-monitor.git"
+  },
+  "keywords": [
+    "chia"
+  ],
+  "author": "Martin Jonsson <martin.jonsson@gmail.com>",
+  "license": "MIT",
+  "devDependencies": {
+    "@aptoma/eslint-config": "^7.0.1",
+    "eslint": "^7.26.0"
+  },
+  "dependencies": {
+    "chia-farm-summary": "0.0.1"
+  }
+}
