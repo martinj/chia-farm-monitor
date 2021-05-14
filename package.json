@@ -1,6 +1,6 @@
 {
   "name": "chia-farm-monitor",
-  "version": "0.0.2",
+  "version": "1.0.0",
   "description": "monitor chia farm status",
   "main": "index.js",
   "scripts": {
