@@ -74,7 +74,7 @@ class Monitor extends EventEmitter {
 		if (this.lastWasError) {
 			this.safeEmit('farmRestored');
 		}
-
+		this.safeEmit('farmOk');
 		this.lastWasError = false;
 	}
 

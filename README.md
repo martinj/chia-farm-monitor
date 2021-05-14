@@ -23,6 +23,10 @@ mon.on('farmRestored', () => {
 	console.log('Farm has recovered from previous error');
 });
 
+mon.on('farmOk', () => {
+	console.log('Farm ok');
+});
+
 mon.on('error', (err) => console.log('something crapped out', err));
 
 mon.start();
