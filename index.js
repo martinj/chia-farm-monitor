@@ -29,14 +29,14 @@ class Monitor extends EventEmitter {
 		try {
 			const summary = await chiaFarmSummary(this.chia);
 			if (!summary.farmingStatus) {
-				return this.notOk('No farming status recieved');
+				return this.notOk('No farming status recieved', summary);
 			}
 
 			if (summary.farmingStatus !== 'Farming') {
-				return this.notOk(`Farm not running, status: ${summary.farmingStatus}`);
+				return this.notOk(`Farm not running, status: ${summary.farmingStatus}`, summary);
 			}
 
-			this.isOk();
+			this.isOk(summary);
 		} catch (err) {
 			this.notOk(`Monitor check failed: ${err.message}`);
 		} finally {
@@ -65,16 +65,16 @@ class Monitor extends EventEmitter {
 		this.lastWasError = false;
 	}
 
-	async notOk(msg) {
+	async notOk(msg, summary) {
 		this.lastWasError = true;
-		this.safeEmit('farmError', msg);
+		this.safeEmit('farmError', msg, summary);
 	}
 
-	async isOk() {
+	async isOk(summary) {
 		if (this.lastWasError) {
-			this.safeEmit('farmRestored');
+			this.safeEmit('farmRestored', summary);
 		}
-		this.safeEmit('farmOk');
+		this.safeEmit('farmOk', summary);
 		this.lastWasError = false;
 	}
 
